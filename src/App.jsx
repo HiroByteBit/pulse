@@ -1,4 +1,4 @@
-import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Shell from './components/layout/Shell';
 import Dashboard from './pages/Dashboard';
 import Patients from './pages/Patients';
@@ -6,7 +6,7 @@ import PatientDetail from './pages/PatientDetail';
 import Appointments from './pages/Appointments';
 import Analytics from './pages/Analytics';
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <Shell />,
@@ -22,7 +22,9 @@ const router = createHashRouter([
     path: '*',
     element: <Navigate to="/" replace />,
   },
-]);
+], {
+  basename: '/pulse',
+});
 
 export function App() {
   return <RouterProvider router={router} />;
